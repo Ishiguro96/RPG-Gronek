@@ -4,7 +4,7 @@
 
 #include <map>
 
-#include "ResourcePath.hpp"
+#include "../../ResourcePath.hpp"
 
 //DEBUG
 #include <iostream>

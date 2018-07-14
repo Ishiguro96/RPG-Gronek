@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "ResourceHolder.hpp"
+#include "Core/Resources/ResourceHolder.hpp"
 #include "SceneNode.hpp"
 
 namespace eng {

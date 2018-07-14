@@ -1,13 +1,13 @@
 #pragma once
 
-#include "Window.hpp"
+#include "../Util/Window.hpp"
 
 #include <SFML/Graphics.hpp>
 
 #include <Box2D/Box2D.h>
 
-#include "SceneNode.hpp"
-#include "ResourceHolder.hpp"
+#include "../../SceneNode.hpp"
+#include "../Resources/ResourceHolder.hpp"
 
 namespace eng {
     class EntityBase :public SceneNode{

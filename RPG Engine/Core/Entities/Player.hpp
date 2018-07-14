@@ -6,10 +6,10 @@
 
 #include <Box2D/Box2D.h>
 
-#include "ResourcePath.hpp"
-#include "ResourceHolder.hpp"
+#include "../../ResourcePath.hpp"
+#include "../Resources/ResourceHolder.hpp"
 
-#include "SceneNode.hpp"
+#include "../../SceneNode.hpp"
 
 namespace eng {
     class Player :public SceneNode{

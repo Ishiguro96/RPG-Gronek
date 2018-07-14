@@ -19,7 +19,7 @@ namespace eng {
         
         static void CloseWindow();
         
-        static void DrawObject(sf::Drawable drawable);
+        //static void DrawObject(sf::Drawable drawable);
     private:
         Window() { }
         static sf::RenderWindow _mWindow;

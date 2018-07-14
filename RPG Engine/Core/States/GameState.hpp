@@ -4,8 +4,8 @@
 
 #include "StatesBase.hpp"
 
-#include "Player.hpp"
-#include "Scene.hpp"
+#include "../Entities/Player.hpp"
+#include "../../Scene.hpp"
 
 class Core;
 
