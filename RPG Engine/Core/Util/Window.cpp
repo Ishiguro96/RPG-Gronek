@@ -42,7 +42,7 @@ namespace eng{
         Window::_mWindow.close();
     }
 
-    void Window::DrawObject(sf::Drawable drawable){
+   /* void Window::DrawObject(sf::Drawable drawable){
         Window::_mWindow.draw(drawable);
-    }
+    }*/
 }

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Window.hpp"
+#include "Core/Util/Window.hpp"
 
 #include <SFML/Graphics.hpp>
 
@@ -12,8 +12,8 @@
 
 #include "LevelBase.hpp"
 #include "SceneNode.hpp"
-#include "Player.hpp"
-#include "EntityBase.hpp"
+#include "Core/Entities/Player.hpp"
+#include "Core/Entities/EntityBase.hpp"
 
 namespace eng {
     enum SceneNodeTypes {PLAYER,

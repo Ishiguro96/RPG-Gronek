@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 
-#include "Core.hpp"
+#include "Core/Core.hpp"
 
 int main(){
     eng::Core core;

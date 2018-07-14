@@ -6,8 +6,8 @@
 
 #include <Box2D/Box2D.h>
 
-#include "SceneNode.hpp"
-#include "ResourceHolder.hpp"
+#include "../../SceneNode.hpp"
+#include "../Resources/ResourceHolder.hpp"
 
 namespace eng {
     class EntityBase :public SceneNode{
