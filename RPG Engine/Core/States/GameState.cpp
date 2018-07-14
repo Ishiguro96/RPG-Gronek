@@ -3,14 +3,15 @@
 namespace eng{
     GameState::GameState(){
         _mScene.AddSceneNode(1, SceneNodeTypes::PLAYER);
-        //_mScene.AddSceneNode(1, SceneNodeTypes::TEST_ENTITY, _mCore->GetWindowCore().GetWindow());
-        _mScene.InitializeSceneNodes();
         
+        _mScene.InitializeSceneNodes();
         _mScene.InitializeWorld();
+        
+        _mView.setSize(WINDOW_WIDTH / 4.f, WINDOW_HEIGHT / 4.f);
     }
     
     void GameState::Clear(){
-        _mScene.ClearScene(sf::Color::Yellow);
+        _mScene.ClearScene(sf::Color::Black);
     }
     
     void GameState::HandleEvent(){
@@ -22,6 +23,9 @@ namespace eng{
     }
     
     void GameState::Update(){
+        _mView.setCenter(_mScene.GetSceneNode(1)->GetPosition().x, _mScene.GetSceneNode(1)->GetPosition().y);
+        Window::SetView(_mView);
+        
         _mScene.UpdateScene();
         
         _mScene.WorldLoop();

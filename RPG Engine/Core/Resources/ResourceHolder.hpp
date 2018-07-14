@@ -12,7 +12,7 @@ using namespace std;
 
 namespace Resources {
     enum Textures {
-        PLAYER,
+        PLAYER_MOVEMENT, PLAYER_IDLE,
         TESTLEVEL_BACKGROUND, TESTLEVEL_COLLISION, TESTLEVEL_FOREGROUND,
         TEST_ENTITY
     };

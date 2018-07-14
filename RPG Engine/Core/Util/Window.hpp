@@ -2,6 +2,9 @@
 
 #include <SFML/Graphics.hpp>
 
+#define WINDOW_WIDTH 1080
+#define WINDOW_HEIGHT 720
+
 namespace eng {
     class Window{
     public:
@@ -19,7 +22,7 @@ namespace eng {
         
         static void CloseWindow();
         
-        //static void DrawObject(sf::Drawable drawable);
+        static void SetView(const sf::View& view);
     private:
         Window() { }
         static sf::RenderWindow _mWindow;

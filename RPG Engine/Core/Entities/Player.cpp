@@ -9,7 +9,7 @@ namespace eng {
     ///////////////
     Player::Player(){
         _mPosition.x = 500.f;
-        _mPosition.y = 0.f;
+        _mPosition.y = 580.f;
         
         _mVelocity.x = 0.f;
         _mVelocity.y = 0.f;
@@ -32,9 +32,9 @@ namespace eng {
     //INITIALIZE METHOD//
     /////////////////////
     void Player::Initialize(b2World& world){
-        Player::_pLoadTexture("walk40.png");
-        
-        Player::SetPosition(sf::Vector2f(200.f, 0.f));
+        Player::_pLoadTexture("idle60.png", Resources::Textures::PLAYER_IDLE);
+        Player::_pLoadTexture("walk50.png", Resources::Textures::PLAYER_MOVEMENT);
+        _mSprite.setTexture(_mResourceHolder.Get(Resources::Textures::PLAYER_IDLE));
         
         _pCenterSpriteOrigin();
         
@@ -42,7 +42,7 @@ namespace eng {
         _mb2BodyDef.type = b2_dynamicBody;
         _mb2BodyDef.position.Set(_mPosition.x, _mPosition.y);
         _mb2Body = world.CreateBody(&_mb2BodyDef);
-        _mb2BodyShape.SetAsBox(201.f * _mScale.x / 2.f, 369.f * _mScale.y / 2.f);
+        _mb2BodyShape.SetAsBox(157.f * _mScale.x / 2.f, 244.f * _mScale.y / 2.f);
         
         _mb2BodyFixture.shape = &_mb2BodyShape;
         _mb2BodyFixture.density = 1.0f;
@@ -114,16 +114,16 @@ namespace eng {
         }
         
         else if(sf::Keyboard::isKeyPressed(_left) && !sf::Keyboard::isKeyPressed(_right)){
-            _mb2Body->ApplyForceToCenter(b2Vec2(-100.f, -100.f), true);
+            _mb2Body->ApplyLinearImpulseToCenter(b2Vec2(-15000.f, 0.f), true);
             _mSprite.setScale(-_mScale.x, _mScale.y);
         }
         else if(sf::Keyboard::isKeyPressed(_right) && !sf::Keyboard::isKeyPressed(_left)){
-            _mb2Body->ApplyForceToCenter(b2Vec2(100.f, 100.f), true);
+            _mb2Body->ApplyLinearImpulseToCenter(b2Vec2(15000.f, 0.f), true);
             _mSprite.setScale(_mScale.x, _mScale.y);
         }
         
         if(sf::Keyboard::isKeyPressed(_jump) && _mCanJump){
-            _mb2Body->ApplyForceToCenter(b2Vec2(0.f, -10.f), true);
+            _mb2Body->ApplyLinearImpulseToCenter(b2Vec2(0.f, -1500000.f), true);
             _mJump = true;
             _mCanJump = false;
         }
@@ -139,6 +139,14 @@ namespace eng {
     void Player::Update(){
         //TEMP
         Anim();
+        
+        if(_mb2Body->GetLinearVelocity().y == 0.f){
+            _mCanJump = true;
+        }
+        
+        _mb2Body->SetFixedRotation(true);
+        _mVelocity.x = _mb2Body->GetLinearVelocity().x;
+        _mVelocity.y = _mb2Body->GetLinearVelocity().y;
         
         _pCenterSpriteOrigin();
         
@@ -156,10 +164,8 @@ namespace eng {
     /////////////////////////////////////////////////////////////////////////////////////////
     //                                ***PRIVATE METHODS***                                //
     /////////////////////////////////////////////////////////////////////////////////////////
-    void Player::_pLoadTexture(const string& filename){
-        _mResourceHolder.Load(Resources::Textures::PLAYER, filename);
-        _mSprite.setTexture(_mResourceHolder.Get(Resources::Textures::PLAYER));
-        _mSprite.setTextureRect(sf::IntRect(0, 0, 201, 369));
+    void Player::_pLoadTexture(const string& filename, enum Resources::Textures type){
+        _mResourceHolder.Load(type, filename);
     }
 
     void Player::_pCenterSpriteOrigin(){
@@ -181,21 +187,33 @@ namespace eng {
     void Player::Anim(){
         if(frame >= 1){
             frame = 0;
-            if(ctr < 39)
-                ++ctr;
-            else
-                ctr = 0;
+            if(shouldMove){
+                if(ctr < 49)
+                    ++ctr;
+                else
+                    ctr = 0;
+            }
+            else{
+                if(ctr < 59)
+                    ++ctr;
+                else
+                    ctr = 0;
+                }
         }
-        else if (!shouldMove && ctr != 0)
-            ++frame;
-        else if (shouldMove)
-            ++frame;
+        frame++;
         
         if(_mVelocity.x != 0)
             shouldMove = true;
         else
             shouldMove = false;
         
-        _mSprite.setTextureRect(sf::IntRect(ctr*201, 0, 201, 369));
+        if(shouldMove){
+            _mSprite.setTexture(_mResourceHolder.Get(Resources::Textures::PLAYER_MOVEMENT));
+            _mSprite.setTextureRect(sf::IntRect(ctr * 157.f, 0.f, 157.f, 244.f));
+        }
+        else{
+            _mSprite.setTexture(_mResourceHolder.Get(Resources::Textures::PLAYER_IDLE));
+            _mSprite.setTextureRect(sf::IntRect(ctr * 129.f, 0.f, 129.f, 235.f));
+        }
     }
 }

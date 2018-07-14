@@ -21,6 +21,7 @@ namespace eng {
         void Render();
     private:
         Scene _mScene;
+        sf::View _mView;
     };
 }
 

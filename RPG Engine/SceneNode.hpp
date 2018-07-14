@@ -11,6 +11,8 @@ namespace eng {
         virtual void HandleEvents() = 0;
         virtual void Update() = 0;
         virtual void Display() = 0;
+        
+        virtual sf::Vector2f GetPosition() = 0;
     private:
     };
 }

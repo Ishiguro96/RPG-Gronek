@@ -8,7 +8,6 @@ namespace Resources {
                                      + filename);
         }
         
-        cout << inserted.second << endl;
         assert(inserted.second);
     }
     

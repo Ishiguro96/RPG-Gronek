@@ -4,7 +4,7 @@ namespace eng{
     sf::RenderWindow Window::_mWindow;
     
     void Window::InitWindow(){
-        Window::_mWindow.create(sf::VideoMode(1080, 720, 32), "Toborson RPG Engine v. 0.0.0 - NOT EVEN ALPHA");
+        Window::_mWindow.create(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT, 32), "Toborson RPG Engine v. 0.0.0 - NOT EVEN ALPHA");
         Window::_mWindow.setVerticalSyncEnabled(false);
     }
     
@@ -42,7 +42,8 @@ namespace eng{
         Window::_mWindow.close();
     }
 
-   /* void Window::DrawObject(sf::Drawable drawable){
-        Window::_mWindow.draw(drawable);
-    }*/
+    void Window::SetView(const sf::View& view){
+        Window::_mWindow.setView(view);
+    }
+
 }

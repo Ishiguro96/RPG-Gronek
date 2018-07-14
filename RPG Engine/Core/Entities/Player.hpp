@@ -39,7 +39,7 @@ namespace eng {
         void Anim();
     private:
         //PRIVATE METHODS//
-        void _pLoadTexture(const string& filename);
+        void _pLoadTexture(const string& filename, enum Resources::Textures type);
         
         void _pJump();
         

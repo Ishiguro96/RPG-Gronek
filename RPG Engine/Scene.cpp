@@ -28,7 +28,7 @@ namespace eng{
     }
     
     void Scene::InitializeWorld(){
-        _b2GroundDef.position.Set(500.f, 400.f);
+        _b2GroundDef.position.Set(500.f, 650.f);
         _b2Ground = _b2World.CreateBody(&_b2GroundDef);
         _b2GroundShape.SetAsBox(800.f / 2.f, 50.f / 2.f);
         _b2Ground->CreateFixture(&_b2GroundShape, 1.0f);
@@ -49,7 +49,7 @@ namespace eng{
         //_b2Box->SetTransform(_b2Box->GetPosition(), 60.f * M_PI / 180.f);
         
         _mGround.setSize(sf::Vector2f(800.f, 50.f));
-        _mGround.setFillColor(sf::Color::Magenta);
+        _mGround.setFillColor(sf::Color::Green);
         _mGround.setOrigin(_mGround.getLocalBounds().width / 2.f, _mGround.getLocalBounds().height / 2.f);
         
         _mBox.setSize(sf::Vector2f(10.f, 10.f));
