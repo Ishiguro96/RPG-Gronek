@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Window.hpp"
+#include "../Util/Window.hpp"
 
 #include <SFML/Graphics.hpp>
 
