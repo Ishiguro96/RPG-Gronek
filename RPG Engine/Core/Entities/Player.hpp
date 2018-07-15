@@ -41,8 +41,6 @@ namespace eng {
         //PRIVATE METHODS//
         void _pLoadTexture(const string& filename, enum Resources::Textures type);
         
-        void _pJump();
-        
         bool _pIsEntityMoving();
     
         void _pCenterSpriteOrigin();
@@ -54,6 +52,9 @@ namespace eng {
         
         sf::Vector2f _mPosition;
         sf::Vector2f _mVelocity;
+        sf::Vector2f _mMaxVelocity;
+        
+        sf::Vector2f _mDesiredVelocity;
         
         sf::Vector2f _mScale;
         

@@ -7,7 +7,7 @@ namespace eng{
         _mScene.InitializeSceneNodes();
         _mScene.InitializeWorld();
         
-        _mView.setSize(WINDOW_WIDTH / 4.f, WINDOW_HEIGHT / 4.f);
+        _mView.setSize(WINDOW_WIDTH / 1.f, WINDOW_HEIGHT / 1.f);
     }
     
     void GameState::Clear(){

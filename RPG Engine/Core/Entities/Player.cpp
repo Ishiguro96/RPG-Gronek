@@ -14,6 +14,12 @@ namespace eng {
         _mVelocity.x = 0.f;
         _mVelocity.y = 0.f;
         
+        _mMaxVelocity.x = 200.f;
+        _mMaxVelocity.y = 1000.f;
+        
+        _mDesiredVelocity.x = 0.f;
+        _mDesiredVelocity.y = 0.f;
+        
         _mScale.x = 0.25f;
         _mScale.y = 0.25f;
         Player::SetScale(_mScale);
@@ -45,11 +51,12 @@ namespace eng {
         _mb2BodyShape.SetAsBox(157.f * _mScale.x / 2.f, 244.f * _mScale.y / 2.f);
         
         _mb2BodyFixture.shape = &_mb2BodyShape;
-        _mb2BodyFixture.density = 1.0f;
-        _mb2BodyFixture.friction = 0.8f;
+        _mb2BodyFixture.density = 1.f;
+        _mb2BodyFixture.friction = 0.7f;
         _mb2BodyFixture.restitution = 0.f;
         
         _mb2Body->CreateFixture(&_mb2BodyFixture);
+        
     }
 
     ////////////////////
@@ -110,21 +117,15 @@ namespace eng {
         
         if((!sf::Keyboard::isKeyPressed(_left) && !sf::Keyboard::isKeyPressed(_right)) ||
            (sf::Keyboard::isKeyPressed(_left) && sf::Keyboard::isKeyPressed(_right))){
-            
         }
-        
         else if(sf::Keyboard::isKeyPressed(_left) && !sf::Keyboard::isKeyPressed(_right)){
-            _mb2Body->ApplyLinearImpulseToCenter(b2Vec2(-15000.f, 0.f), true);
             _mSprite.setScale(-_mScale.x, _mScale.y);
         }
         else if(sf::Keyboard::isKeyPressed(_right) && !sf::Keyboard::isKeyPressed(_left)){
-            _mb2Body->ApplyLinearImpulseToCenter(b2Vec2(15000.f, 0.f), true);
             _mSprite.setScale(_mScale.x, _mScale.y);
         }
         
         if(sf::Keyboard::isKeyPressed(_jump) && _mCanJump){
-            _mb2Body->ApplyLinearImpulseToCenter(b2Vec2(0.f, -1500000.f), true);
-            _mJump = true;
             _mCanJump = false;
         }
     }
@@ -145,6 +146,7 @@ namespace eng {
         }
         
         _mb2Body->SetFixedRotation(true);
+        
         _mVelocity.x = _mb2Body->GetLinearVelocity().x;
         _mVelocity.y = _mb2Body->GetLinearVelocity().y;
         
@@ -152,6 +154,9 @@ namespace eng {
         
         _mSprite.setPosition(_mb2Body->GetPosition().x, _mb2Body->GetPosition().y);
         _mSprite.setRotation(_mb2Body->GetAngle() * 180.f / M_PI);
+        
+        //DEBUG
+        cout << _mVelocity.x << "    " << _mVelocity.y << " " <<_mCanJump << endl;
     }
 
     //////////////////
@@ -170,10 +175,6 @@ namespace eng {
 
     void Player::_pCenterSpriteOrigin(){
         _mSprite.setOrigin(_mSprite.getLocalBounds().width/2, _mSprite.getLocalBounds().height/2);
-    }
-
-    void Player::_pJump(){
-        _mVelocity.y -= 25.0f;
     }
 
     bool Player::_pIsEntityMoving(){
@@ -202,7 +203,7 @@ namespace eng {
         }
         frame++;
         
-        if(_mVelocity.x != 0)
+        if(_mVelocity.x < -0.01f || _mVelocity.x > 0.01f)
             shouldMove = true;
         else
             shouldMove = false;

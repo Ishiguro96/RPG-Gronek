@@ -59,5 +59,7 @@ namespace eng {
         
         sf::RectangleShape _mGround;
         sf::RectangleShape _mBox;
+        
+        float PPM;
     };
 }

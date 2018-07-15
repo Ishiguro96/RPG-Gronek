@@ -2,7 +2,7 @@
 
 namespace eng{
     Scene::Scene() :_b2World(b2Vec2(0.f, 100.f)){
-        
+        PPM = 100.f;
     }
     
     void Scene::AddSceneNode(const int ID, enum SceneNodeTypes types){
