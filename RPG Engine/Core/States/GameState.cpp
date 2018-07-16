@@ -11,7 +11,7 @@ namespace eng{
     }
     
     void GameState::Clear(){
-        _mScene.ClearScene(sf::Color::Black);
+        _mScene.ClearScene(sf::Color::White);
     }
     
     void GameState::HandleEvent(){
@@ -23,7 +23,7 @@ namespace eng{
     }
     
     void GameState::Update(){
-        _mView.setCenter(_mScene.GetSceneNode(1)->GetPosition().x, _mScene.GetSceneNode(1)->GetPosition().y);
+        //_mView.setCenter(_mScene.GetSceneNode(1)->GetPosition().x, _mScene.GetSceneNode(1)->GetPosition().y);
         Window::SetView(_mView);
         
         _mScene.UpdateScene();

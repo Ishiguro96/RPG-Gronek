@@ -9,7 +9,7 @@ namespace eng {
     ///////////////
     Player::Player(){
         _mPosition.x = 500.f;
-        _mPosition.y = 580.f;
+        _mPosition.y = -60000.f;
         
         _mVelocity.x = 0.f;
         _mVelocity.y = 0.f;
@@ -32,6 +32,9 @@ namespace eng {
         frame = 0;
         ctr = 0;
         shouldMove = false;
+        
+        //TEMP
+        factor = 0.02;
     }
 
     /////////////////////
@@ -46,9 +49,10 @@ namespace eng {
         
         //Box2D
         _mb2BodyDef.type = b2_dynamicBody;
-        _mb2BodyDef.position.Set(_mPosition.x, _mPosition.y);
+        _mb2BodyDef.position.Set(_mPosition.x * factor, _mPosition.y * factor);
         _mb2Body = world.CreateBody(&_mb2BodyDef);
-        _mb2BodyShape.SetAsBox(157.f * _mScale.x / 2.f, 244.f * _mScale.y / 2.f);
+        _mb2BodyShape.SetAsBox((157.f * _mScale.x / 2.f) * factor,
+                               (244.f * _mScale.y / 2.f) * factor);
         
         _mb2BodyFixture.shape = &_mb2BodyShape;
         _mb2BodyFixture.density = 1.f;
@@ -156,7 +160,7 @@ namespace eng {
         _mSprite.setRotation(_mb2Body->GetAngle() * 180.f / M_PI);
         
         //DEBUG
-        cout << _mVelocity.x << "    " << _mVelocity.y << " " <<_mCanJump << endl;
+        cout << _mVelocity.x << " " << _mVelocity.y << " >>> " <<_mCanJump << endl;
     }
 
     //////////////////

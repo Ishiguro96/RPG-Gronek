@@ -17,6 +17,9 @@
 		2E2C9BBC20B5978000440285 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E2C9BBA20B5978000440285 /* Scene.cpp */; };
 		2E2C9BBF20B597F500440285 /* SceneNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E2C9BBD20B597F500440285 /* SceneNode.cpp */; };
 		2E47074920A422C7007E6773 /* ResourceHolder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E47074720A422C7007E6773 /* ResourceHolder.cpp */; };
+		2E53920020FCE8350078CA4D /* b2Draw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2E5391FF20FCE8350078CA4D /* b2Draw.cpp */; };
+		2E53920220FCE8BA0078CA4D /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E53920120FCE8BA0078CA4D /* GLUT.framework */; };
+		2E53920420FCE8FF0078CA4D /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E53920320FCE8FF0078CA4D /* OpenGL.framework */; };
 		2E74186E208E94B4008A89C9 /* Bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E74186D208E94B4008A89C9 /* Bg.png */; };
 		2E741870208E972E008A89C9 /* Sword.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E74186F208E972E008A89C9 /* Sword.png */; };
 		2E74187F208F8D4B008A89C9 /* Kwiatek.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E74187E208F8D4B008A89C9 /* Kwiatek.png */; };
@@ -57,6 +60,10 @@
 		2E2C9BBE20B597F500440285 /* SceneNode.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SceneNode.hpp; sourceTree = "<group>"; };
 		2E47074720A422C7007E6773 /* ResourceHolder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ResourceHolder.cpp; sourceTree = "<group>"; };
 		2E47074820A422C7007E6773 /* ResourceHolder.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ResourceHolder.hpp; sourceTree = "<group>"; };
+		2E5391FE20FCE7800078CA4D /* b2Draw.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = b2Draw.hpp; sourceTree = "<group>"; };
+		2E5391FF20FCE8350078CA4D /* b2Draw.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = b2Draw.cpp; sourceTree = "<group>"; };
+		2E53920120FCE8BA0078CA4D /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		2E53920320FCE8FF0078CA4D /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		2E74186D208E94B4008A89C9 /* Bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bg.png; sourceTree = "<group>"; };
 		2E74186F208E972E008A89C9 /* Sword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Sword.png; sourceTree = "<group>"; };
 		2E74187E208F8D4B008A89C9 /* Kwiatek.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Kwiatek.png; sourceTree = "<group>"; };
@@ -91,6 +98,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E53920420FCE8FF0078CA4D /* OpenGL.framework in Frameworks */,
+				2E53920220FCE8BA0078CA4D /* GLUT.framework in Frameworks */,
 				2E9F3C6B20F21DC2007D5D69 /* libBox2D.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,6 +144,8 @@
 		2E9F3C6920F21DC1007D5D69 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2E53920320FCE8FF0078CA4D /* OpenGL.framework */,
+				2E53920120FCE8BA0078CA4D /* GLUT.framework */,
 				2E9F3C6A20F21DC2007D5D69 /* libBox2D.a */,
 			);
 			name = Frameworks;
@@ -143,9 +154,9 @@
 		2EE7A3112066723900E72A3A = {
 			isa = PBXGroup;
 			children = (
-				2EE7A31D2066723900E72A3A /* RPG Engine */,
-				2EE7A31C2066723900E72A3A /* Products */,
 				2E9F3C6920F21DC1007D5D69 /* Frameworks */,
+				2EE7A31C2066723900E72A3A /* Products */,
+				2EE7A31D2066723900E72A3A /* RPG Engine */,
 			);
 			sourceTree = "<group>";
 		};
@@ -230,6 +241,8 @@
 		2EFC27DC207C088A00CD1116 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				2E5391FF20FCE8350078CA4D /* b2Draw.cpp */,
+				2E5391FE20FCE7800078CA4D /* b2Draw.hpp */,
 				2E0F16AC2080103000A559AF /* Animation.cpp */,
 				2E0F16AD2080103000A559AF /* Animation.hpp */,
 				2EFC27DD207C089800CD1116 /* Window.cpp */,
@@ -348,6 +361,7 @@
 				2E2C9BBF20B597F500440285 /* SceneNode.cpp in Sources */,
 				2E47074920A422C7007E6773 /* ResourceHolder.cpp in Sources */,
 				2EFC27DB207C083E00CD1116 /* Core.cpp in Sources */,
+				2E53920020FCE8350078CA4D /* b2Draw.cpp in Sources */,
 				2E741884208FC8FE008A89C9 /* LevelBase.cpp in Sources */,
 				2EE7A3242066723900E72A3A /* main.cpp in Sources */,
 			);

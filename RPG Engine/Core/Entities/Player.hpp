@@ -73,5 +73,7 @@ namespace eng {
         b2Body* _mb2Body;
         b2PolygonShape _mb2BodyShape;
         b2FixtureDef _mb2BodyFixture;
+        
+        float factor;
     };
 }
