@@ -7,7 +7,7 @@ namespace eng{
         _mScene.InitializeSceneNodes();
         _mScene.InitializeWorld();
         
-        _mView.setSize(WINDOW_WIDTH / 1.f, WINDOW_HEIGHT / 1.f);
+        _mView.setSize(WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 2.f);
     }
     
     void GameState::Clear(){
@@ -23,7 +23,7 @@ namespace eng{
     }
     
     void GameState::Update(){
-        //_mView.setCenter(_mScene.GetSceneNode(1)->GetPosition().x, _mScene.GetSceneNode(1)->GetPosition().y);
+        _mView.setCenter(_mScene.GetSceneNode(1)->GetPosition().x, _mScene.GetSceneNode(1)->GetPosition().y);
         Window::SetView(_mView);
         
         _mScene.UpdateScene();

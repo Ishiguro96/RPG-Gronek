@@ -1,11 +1,14 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 #define WINDOW_WIDTH 1080
 #define WINDOW_HEIGHT 720
 
 namespace eng {
+    const float PPM = 30.f;
+    
     class Window{
     public:
         static sf::RenderWindow& GetWindow();

@@ -15,8 +15,6 @@
 #include "Core/Entities/Player.hpp"
 #include "Core/Entities/EntityBase.hpp"
 
-#include "Core/Util/b2Draw.hpp"
-
 namespace eng {
     enum SceneNodeTypes {PLAYER,
                          TEST_ENTITY
@@ -61,7 +59,5 @@ namespace eng {
         
         sf::RectangleShape _mGround;
         sf::RectangleShape _mBox;
-        
-        float PPM;
     };
 }

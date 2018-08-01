@@ -2,7 +2,7 @@
 
 namespace eng{
     Scene::Scene() :_b2World(b2Vec2(0.f, 10.f)){
-        PPM = 30.f;
+        
     }
     
     void Scene::AddSceneNode(const int ID, enum SceneNodeTypes types){
@@ -27,18 +27,9 @@ namespace eng{
         return found->second;
     }
     
-    void Scene::InitializeWorld(){
-        b2GLDraw debugDraw;
-        _b2World.SetDebugDraw(&debugDraw);
-        uint32 flags = b2Draw::e_shapeBit;
-        flags += b2Draw::e_aabbBit;
-        flags += b2Draw::e_pairBit;
-        flags += b2Draw::e_jointBit;
-        flags += b2Draw::e_centerOfMassBit;
-        debugDraw.SetFlags(flags);
-        
+    void Scene::InitializeWorld(){        
         _b2GroundDef.position.Set(500.f / PPM,
-                                  800.f / PPM);
+                                  600.f / PPM);
         _b2Ground = _b2World.CreateBody(&_b2GroundDef);
         _b2GroundShape.SetAsBox((800.f / 2.f) / PPM,
                                 (50.f / 2.f) / PPM);
@@ -58,7 +49,7 @@ namespace eng{
         
         _b2Box->CreateFixture(&_b2BoxFixDef);
         
-        _b2Box->SetAngularVelocity(8.f);
+        _b2Box->SetAngularVelocity(4.f);
         
         _mGround.setSize(sf::Vector2f(800.f,
                                       50.f));
@@ -117,7 +108,5 @@ namespace eng{
         
         Window::GetWindow().draw(_mBox);
         Window::GetWindow().draw(_mGround);
-        
-        _b2World.DrawDebugData();
     }
 }

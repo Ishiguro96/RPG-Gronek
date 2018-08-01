@@ -14,31 +14,40 @@
 namespace eng {
     class Player :public SceneNode{
     public:
+        #pragma mark - Construtors
         Player();
         
+        #pragma mark - Initialization
+        void Initialize(b2World& world);
+        
+        #pragma mark - Rotation
         void SetRotation(const float angle);
         float GetRotation();
         
+        #pragma mark - Position
         void SetPosition(const sf::Vector2f& pos);
         void AddToPosition(const sf::Vector2f& add_pos);
         sf::Vector2f GetPosition();
         
+        #pragma mark - Scale
         void SetScale(const sf::Vector2f& scale);
         void SetScale(float x, float y);
         sf::Vector2f GetScale();
-
-        void SetMovingMultiplier(int multiplier);
         
-        void Initialize(b2World& world);
+        #pragma mark - Handling inputs
         void HandleInputs();
+        #pragma mark - Handling game events
         void HandleEvents();
+        #pragma mark - Updating
         void Update();
+        #pragma mark - Displaying
         void Display();
         
+        #pragma make - Temporary methods
         //TEMP
-        void Anim();
+        void Anim(); //Tem
     private:
-        //PRIVATE METHODS//
+        #pragma mark - Private methods
         void _pLoadTexture(const string& filename, enum Resources::Textures type);
         
         bool _pIsEntityMoving();
@@ -73,7 +82,5 @@ namespace eng {
         b2Body* _mb2Body;
         b2PolygonShape _mb2BodyShape;
         b2FixtureDef _mb2BodyFixture;
-        
-        float factor;
     };
 }
